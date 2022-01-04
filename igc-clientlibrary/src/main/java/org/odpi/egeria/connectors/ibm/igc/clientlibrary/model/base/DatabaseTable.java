@@ -689,4 +689,6 @@ public class DatabaseTable extends Datagroup {
     @JsonProperty("target_mapping_specifications")
     public void setTargetMappingSpecifications(ItemList<MappingSpecification> targetMappingSpecifications) { this.targetMappingSpecifications = targetMappingSpecifications; }
 
+
+
 }
