@@ -85,7 +85,7 @@
     </modules>
 
     <properties>
-        <open-metadata.version>3.5-SNAPSHOT</open-metadata.version>
+        <open-metadata.version>3.10-SNAPSHOT</open-metadata.version>
         <connector.version>3.3-SNAPSHOT</connector.version>
         <!-- Level of Java  -->
         <maven.compiler.source>11</maven.compiler.source>
@@ -891,6 +891,7 @@
                                     <goal>sign</goal>
                                 </goals>
                                 <configuration>
+                                    <!--suppress UnresolvedMavenProperty -->
                                     <passphrase>${env.GPG_PASSPHRASE}</passphrase>
                                     <gpgArguments>
                                         <arg>--batch</arg>

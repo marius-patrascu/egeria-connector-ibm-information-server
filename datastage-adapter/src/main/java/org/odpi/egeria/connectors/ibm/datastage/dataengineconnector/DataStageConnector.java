@@ -406,6 +406,25 @@ public class DataStageConnector extends DataEngineConnectorBase {
         }
     }
 
+    @Override
+    public String getReport(String guid){
+        String report = igcRestClient.getReport(guid);
+        return report;
+
+        /*
+        *
+Lineage for Asset:
+"Term","Test of Design Description","","https://clrv0000189015.ic.ing.net:9445/ibm/iis/igc/#dossierView/6662c0f2.e1b1ec6c.9sh7pmvv8.sb3fjp4.t8n4p0.p5ep8nvfc9db9cvs956r6"
+Downstream:
+Source Type,Source Asset,Source Context,Source URL,Target Type,Target Asset,Target Context,Target URL
+Upstream:
+Source Type,Source Asset,Source Context,Source URL,Target Type,Target Asset,Target Context,Target URL
+
+        * */
+    }
+
+
+
     /**
      * {@inheritDoc}
      */

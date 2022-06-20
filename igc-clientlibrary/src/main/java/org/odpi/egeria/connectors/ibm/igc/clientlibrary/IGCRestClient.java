@@ -103,6 +103,7 @@ public class IGCRestClient {
     private static final String EP_LOGOUT  = EP_BASE_API + "/logout";
     private static final String EP_BUNDLES = EP_BASE_API + "/bundles";
     private static final String EP_BUNDLE_ASSETS = EP_BUNDLES + "/assets";
+    private static final String REPORT_ENDPOINT = EP_BASE_API + "/flows/report";
 
     /**
      * Default constructor used by the IGCRestClient.
@@ -516,6 +517,29 @@ public class IGCRestClient {
         }
 
         return response;
+    }
+
+    public String getReport(String guid) {
+
+        Map<String, Object> request = new HashMap<>();
+        request.put("assetId", guid);
+        request.put("markTruncation", false);
+        request.put("flowTypes", Collections.singletonList("DESIGN"));
+        try {
+        String s = new ObjectMapper().writeValueAsString(request);
+        ResponseEntity<String> stringResponseEntity = null;
+
+            stringResponseEntity = makeRequest(baseURL + REPORT_ENDPOINT, HttpMethod.POST, MediaType.APPLICATION_JSON, s, true);
+
+        if (stringResponseEntity.getStatusCode().equals(HttpStatus.OK)) {
+            return stringResponseEntity.getBody();
+        }
+        else {
+            return stringResponseEntity.getStatusCode()+ "\n###################\n" + stringResponseEntity.getBody();
+        }
+        } catch (IGCConnectivityException | JsonProcessingException e) {
+            return e.toString();
+        }
 
     }
 
